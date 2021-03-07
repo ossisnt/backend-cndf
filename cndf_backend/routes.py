@@ -24,13 +24,20 @@ def index():
         r = r['connections']
 
         data = defaultdict(list)
+        lista = []
 
         for x in r:
             if 'emailAddresses' in x.keys():
                 email = x['emailAddresses'][0]['value']
                 data[email.split("@")[1]].append(email)
+        
+        for x in data.keys():
+            lista.append({
+                'domain': x,
+                'emails': data[x]
+            })
 
-        return {'data': data, 'status': 'success'}
+        return {'data': lista, 'status': 'success'}
 
 
 @app.route('/auth/google')
