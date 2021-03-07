@@ -1,0 +1,7 @@
+runtime: python39
+entrypoint: gunicorn -b :$PORT main:app
+
+env_variables:
+  GOOGLE_SECRET_KEY: ""
+  APP_SECRET_KEY: ""
+  GOOGLE_CLIENT_ID: ""
